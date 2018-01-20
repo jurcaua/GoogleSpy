@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	public IEnumerator moveTowards(Position p, int delayBeforeAction) {
+	public IEnumerator moveTowards(Position p, int delayBeforeAction, string parameter) {
 		isMoving = true;
 		stoppedMovement = p;
 
@@ -49,13 +49,20 @@ public class PlayerMovement : MonoBehaviour {
 
 		}
 
+		float speed = 1f;
+		if (parameter == "quickly") {
+			speed = 2.5f;
+		} else if (parameter == "slowly") {
+			speed = 0.3f;
+		}
+
 		yield return new WaitForSeconds (delayBeforeAction);
 
 		float distance = Vector3.Distance (transform.position, p.transform.position);
 		Vector3 direction = (p.transform.position - transform.position) / 50;
 		for (int i = 0; i < 50; i++) {
 			transform.position += direction;
-			yield return new WaitForSeconds (0.005f * distance);
+			yield return new WaitForSeconds (0.005f * distance / speed);
 		}
 
 		pos = p;

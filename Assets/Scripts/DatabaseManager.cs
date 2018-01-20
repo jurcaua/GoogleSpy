@@ -50,7 +50,7 @@ public class DatabaseManager : MonoBehaviour {
         if (ActionWords.Contains(lastAction)) {
             ttm.TranslateEnemy(lastAction, lastColor, lastSpeed);
         } else {
-            ttm.Translate(lastAction, lastDelay);
+            ttm.Translate(lastAction, lastDelay, "");
         }
     }
 

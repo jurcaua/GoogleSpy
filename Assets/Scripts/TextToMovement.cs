@@ -18,19 +18,19 @@ public class TextToMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-			Translate ("left", 0);
+			Translate ("left", 0, "");
 		}
 
 		if (Input.GetKeyDown(KeyCode.RightArrow)) {
-			Translate ("right", 0);
+			Translate ("right", 0, "");
 		}
 
 		if (Input.GetKeyDown(KeyCode.UpArrow)) {
-			Translate ("forwards", 0);
+			Translate ("forwards", 0, "");
 		}
 
 		if (Input.GetKeyDown(KeyCode.DownArrow)) {
-			Translate ("backwards", 0);
+			Translate ("backwards", 0, "");
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
@@ -39,17 +39,17 @@ public class TextToMovement : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
-			TranslateEnemy ("sneak", "", "quickly");
+			TranslateEnemy ("sneak", "", "");
 		}
 
 		if (!pm.isMoving && pm.futureActions.Count > 0) {
-			Translate (pm.futureActions [0], 0);
+			Translate (pm.futureActions [0], 0, "");
 			pm.futureActions.RemoveAt (0);
 			//pm.isMoving = true;
 		}
 	}
 
-	public void Translate(string str, int delayBeforeAction) {
+	public void Translate(string str, int delayBeforeAction, string parameter) {
 		if (str == "wait") {
 			//pm.Wait (routine, delayBeforeAction);
 			if (routine != null && !pm.stopped) {
@@ -64,7 +64,7 @@ public class TextToMovement : MonoBehaviour {
 
 		if (str == "resume") {
 			if (pm.stoppedMovement != null && pm.stopped) {
-				routine = StartCoroutine (pm.moveTowards (pm.stoppedMovement, delayBeforeAction));
+				routine = StartCoroutine (pm.moveTowards (pm.stoppedMovement, delayBeforeAction, parameter));
 				pm.stopped = false;
 				Debug.Log ("Resuming");
 			} else {
@@ -84,7 +84,7 @@ public class TextToMovement : MonoBehaviour {
 				//player.transform.position = p.transform.position;
 				//pm.pos = p;
 				Debug.Log ("Going to " + p.name + " in " + delayBeforeAction + " seconds");
-				routine = StartCoroutine (pm.moveTowards (p, delayBeforeAction));
+				routine = StartCoroutine (pm.moveTowards (p, delayBeforeAction, parameter));
 			}
 		} else if (pm.queueable) {
 			Debug.Log ("Wait A Second, I'm Still Moving");
@@ -93,7 +93,7 @@ public class TextToMovement : MonoBehaviour {
 
 	}
 
-	public void TranslateEnemy(string action, string description,string parameter) {
+	public void TranslateEnemy(string action, string description , string parameter) {
 		if (!pm.isMoving) {
 			Position p = pm.pos.isEnemyAvailable (description);
 			StartCoroutine (pm.Action (p, action, parameter));
