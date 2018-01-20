@@ -116,7 +116,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   special: white
-  arrow: {fileID: 0}
+  arrow: {fileID: 1060558652478644, guid: bf1d1c615cc6c9447b0a8b990d50af67, type: 2}
   arrows: []
 --- !u!114 &114304899155910998
 MonoBehaviour:
