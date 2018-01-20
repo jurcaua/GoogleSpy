@@ -51,63 +51,63 @@ public class TextToMovement : MonoBehaviour {
 		}
 	}
 
-	public void Translate(string str, int delayBeforeAction, string parameter) {
-		if (str == "wait") {
-			//pm.Wait (routine, delayBeforeAction);
-			if (routine != null && !pm.stopped) {
-				StopCoroutine (routine);
-				pm.stopped = true;
-				Debug.Log ("Stopping");
-			} else {
-				Debug.Log ("Can't Stop Right Now");
-			}
-			return;
-		} 
-
-		if (str == "resume") {
-			if (pm.stoppedMovement != null && pm.stopped) {
-				routine = StartCoroutine (pm.moveTowards (pm.stoppedMovement, delayBeforeAction, parameter));
-				pm.stopped = false;
-				Debug.Log ("Resuming");
-			} else {
-				Debug.Log ("Already Resumed");
-			}
-			return;
-		}
-
-		if (!pm.isMoving) {
-			Position p = pm.pos.isAvailable (str);
-
-			if (p == null) {
-				Debug.Log ("I Can't Go This Way !");
-			} else if (p.tag == "Enemy") {
-				Debug.Log ("Target is an Enemy");
-			} else {
-				//player.transform.position = p.transform.position;
-				//pm.pos = p;
-				Debug.Log ("Going to " + p.name + " in " + delayBeforeAction + " seconds");
-				if (str == "run to") {
-					routine = StartCoroutine (pm.moveTowards (p, delayBeforeAction, "quickly"));
-				} else {
-					routine = StartCoroutine (pm.moveTowards (p, delayBeforeAction, parameter));
-				}
-			}
-		} else if (pm.queueable) {
-			Debug.Log ("Wait A Second, I'm Still Moving");
-			pm.futureActions.Add (str);
-		}
-
-	}
-
-	public void TranslateEnemy(string action, string description , string parameter) {
-		if (!pm.isMoving) {
-			Position p = pm.pos.isEnemyAvailable (description);
-			Debug.Log (p);
-			StartCoroutine (pm.Action (p, action, parameter));
-		} else {
-			Debug.Log ("Wait A Second, I'm Still Moving");
-		}
-	}
+//	public void Translate(string str, int delayBeforeAction, string parameter) {
+//		if (str == "wait") {
+//			//pm.Wait (routine, delayBeforeAction);
+//			if (routine != null && !pm.stopped) {
+//				StopCoroutine (routine);
+//				pm.stopped = true;
+//				Debug.Log ("Stopping");
+//			} else {
+//				Debug.Log ("Can't Stop Right Now");
+//			}
+//			return;
+//		} 
+//
+//		if (str == "resume") {
+//			if (pm.stoppedMovement != null && pm.stopped) {
+//				routine = StartCoroutine (pm.moveTowards (pm.stoppedMovement, delayBeforeAction, parameter));
+//				pm.stopped = false;
+//				Debug.Log ("Resuming");
+//			} else {
+//				Debug.Log ("Already Resumed");
+//			}
+//			return;
+//		}
+//
+//		if (!pm.isMoving) {
+//			Position p = pm.pos.isAvailable (str);
+//
+//			if (p == null) {
+//				Debug.Log ("I Can't Go This Way !");
+//			} else if (p.tag == "Enemy") {
+//				Debug.Log ("Target is an Enemy");
+//			} else {
+//				//player.transform.position = p.transform.position;
+//				//pm.pos = p;
+//				Debug.Log ("Going to " + p.name + " in " + delayBeforeAction + " seconds");
+//				if (str == "run to") {
+//					routine = StartCoroutine (pm.moveTowards (p, delayBeforeAction, "quickly"));
+//				} else {
+//					routine = StartCoroutine (pm.moveTowards (p, delayBeforeAction, parameter));
+//				}
+//			}
+//		} else if (pm.queueable) {
+//			Debug.Log ("Wait A Second, I'm Still Moving");
+//			pm.futureActions.Add (str);
+//		}
+//
+//	}
+//
+//	public void TranslateEnemy(string action, string description , string parameter) {
+//		if (!pm.isMoving) {
+//			Position p = pm.pos.isEnemyAvailable (description);
+//			Debug.Log (p);
+//			StartCoroutine (pm.Action (p, action, parameter));
+//		} else {
+//			Debug.Log ("Wait A Second, I'm Still Moving");
+//		}
+//	}
 
 	public void NewTranslate(string tag, string action, string direction, string name, int delay, string speed) {
 		if (action == "wait") {
@@ -120,11 +120,19 @@ public class TextToMovement : MonoBehaviour {
 			//movement
 			if ((direction == "right" || direction == "left" || direction == "forwards" || direction == "backwards") && name == null) {
 				NewPosition np = pm.pos.getFixedDirection (direction);
-				StartCoroutine(pm.Move (np, delay, speed));
+				if (action == "run to") {
+					StartCoroutine (pm.Move (np, delay, "quickly"));
+				} else {
+					StartCoroutine (pm.Move (np, delay, speed));
+				}
 			} else {
 				NewPosition np = pm.pos.getPosition (direction, name);
 				if (np != null) {
-					StartCoroutine(pm.Move (np, delay, speed));
+					if (action == "run to") {
+						StartCoroutine (pm.Move (np, delay, "quickly"));
+					} else {
+						StartCoroutine (pm.Move (np, delay, speed));
+					}
 				} else {
 					//No Position Found
 					Debug.Log("ERROR IN FINDING POSITION");

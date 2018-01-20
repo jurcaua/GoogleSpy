@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 	public bool queueable;
 	public float speed;
 
-	public Position stoppedMovement;
+	//public Position stoppedMovement;
 	public bool stopped;
 
 	public GameObject bullet;
@@ -48,10 +48,10 @@ public class PlayerMovement : MonoBehaviour {
 		yield return new WaitForSeconds (delayBetweenActions);
 	}
 
-	public IEnumerator moveTowards(Position p, int delayBeforeAction, string parameter) {
-
-
-		Debug.Log ("Moving Towards: " + p.name + " with delay: " + delayBeforeAction + " and speed " + parameter);
+//	public IEnumerator moveTowards(Position p, int delayBeforeAction, string parameter) {
+//
+//
+//		Debug.Log ("Moving Towards: " + p.name + " with delay: " + delayBeforeAction + " and speed " + parameter);
 //		isMoving = true;
 //		stoppedMovement = p;
 //
@@ -83,11 +83,11 @@ public class PlayerMovement : MonoBehaviour {
 //		pos.UpdateDirections ();
 //
 //
-		yield return new WaitForSeconds (delayBetweenActions);
+//		yield return new WaitForSeconds (delayBetweenActions);
 //
 //		isMoving = false;
 //		StartCoroutine(pos.ShowAvailable (this));
-	}
+//	}
 //
 
 	public IEnumerator Shoot(NewPosition p, int delay, string speed) {
@@ -132,53 +132,53 @@ public class PlayerMovement : MonoBehaviour {
 		
 	}
 
-	public IEnumerator Action(Position p, string action, string parameter) {
-//		yield return new WaitForSeconds (0f);
-//		if (p != null) {
-//
-//			if (action == "shoot") {
-//				Transform b = Instantiate (bullet, transform.position, Quaternion.identity).transform;
-//				b.transform.LookAt (p.transform);
-//				//b.GetComponent<BulletBehaviour> ().speed = Mathf.RoundToInt(b.GetComponent<BulletBehaviour> ().speed * speed);
-//			}
-//
-//			if (action == "sneak") {
-//				float speed = 1f;
-//				if (parameter == "quickly") {
-//					speed = 2.5f;
-//				} else if (parameter == "slowly") {
-//					speed = 0.3f;
-//				}
-//				isMoving = true;
-//
-//				float distance = Vector3.Distance (transform.position, p.transform.position);
-//				Vector3 direction = (p.transform.position - transform.position) / 50;
-//				for (int i = 0; i < 50; i++) {
-//
-//					if (distance != Vector3.Distance (transform.position, p.transform.position)) {
-//						direction = (p.transform.position - transform.position) / (50 - i);
-//					}
-//
-//					transform.position += direction;
-//					yield return new WaitForSeconds (0.005f * distance / speed);
-//				}
-//
-//				pos = p;
-//				p.GetComponent<MeshRenderer> ().enabled = false;
-//				p.UpdateDirections ();
-//
-//				p.tag = "Untagged";
-//				//StopCoroutine(p.GetComponent<EnemyMovement>().routine);
-//				//p.GetComponent<EnemyMovement> ().routine = null;
-//
-				yield return new WaitForSeconds (delayBetweenActions);
-//
-//				isMoving = false;
-//
-//				StartCoroutine(pos.ShowAvailable (this));
-//			}
-//		}
-	}
+//	public IEnumerator Action(Position p, string action, string parameter) {
+////		yield return new WaitForSeconds (0f);
+////		if (p != null) {
+////
+////			if (action == "shoot") {
+////				Transform b = Instantiate (bullet, transform.position, Quaternion.identity).transform;
+////				b.transform.LookAt (p.transform);
+////				//b.GetComponent<BulletBehaviour> ().speed = Mathf.RoundToInt(b.GetComponent<BulletBehaviour> ().speed * speed);
+////			}
+////
+////			if (action == "sneak") {
+////				float speed = 1f;
+////				if (parameter == "quickly") {
+////					speed = 2.5f;
+////				} else if (parameter == "slowly") {
+////					speed = 0.3f;
+////				}
+////				isMoving = true;
+////
+////				float distance = Vector3.Distance (transform.position, p.transform.position);
+////				Vector3 direction = (p.transform.position - transform.position) / 50;
+////				for (int i = 0; i < 50; i++) {
+////
+////					if (distance != Vector3.Distance (transform.position, p.transform.position)) {
+////						direction = (p.transform.position - transform.position) / (50 - i);
+////					}
+////
+////					transform.position += direction;
+////					yield return new WaitForSeconds (0.005f * distance / speed);
+////				}
+////
+////				pos = p;
+////				p.GetComponent<MeshRenderer> ().enabled = false;
+////				p.UpdateDirections ();
+////
+////				p.tag = "Untagged";
+////				//StopCoroutine(p.GetComponent<EnemyMovement>().routine);
+////				//p.GetComponent<EnemyMovement> ().routine = null;
+////
+//				yield return new WaitForSeconds (delayBetweenActions);
+////
+////				isMoving = false;
+////
+////				StartCoroutine(pos.ShowAvailable (this));
+////			}
+////		}
+//	}
 
 	public float getSpeed(string speed) {
 		float s = 1f;
