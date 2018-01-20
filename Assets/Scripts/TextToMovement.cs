@@ -39,7 +39,7 @@ public class TextToMovement : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
-			TranslateEnemy ("sneak", "", "");
+			TranslateEnemy ("sneak", null, "");
 		}
 
 		if (!pm.isMoving && pm.futureActions.Count > 0) {
@@ -96,6 +96,7 @@ public class TextToMovement : MonoBehaviour {
 	public void TranslateEnemy(string action, string description , string parameter) {
 		if (!pm.isMoving) {
 			Position p = pm.pos.isEnemyAvailable (description);
+			Debug.Log (p);
 			StartCoroutine (pm.Action (p, action, parameter));
 		} else {
 			Debug.Log ("Wait A Second, I'm Still Moving");

@@ -44,6 +44,7 @@ public class EnemyMovement : MonoBehaviour {
 				ascending = true;
 			}
 
+
 			yield return new WaitForSeconds (1f);
 
 		}

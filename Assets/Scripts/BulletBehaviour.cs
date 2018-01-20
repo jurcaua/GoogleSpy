@@ -15,4 +15,13 @@ public class BulletBehaviour : MonoBehaviour {
 	void Update () {
 		transform.position += transform.forward * speed / 100;
 	}
+
+	void OnTriggerEnter(Collider coll) {
+		
+		Debug.Log (coll.gameObject.name);
+		if (coll.gameObject.tag == "Enemy") {
+			coll.gameObject.GetComponent<Position>().Die ();
+			Destroy(gameObject);
+		}
+	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Position : MonoBehaviour {
 
@@ -16,6 +17,11 @@ public class Position : MonoBehaviour {
 	public string special;
 
 	public enum direction {right, left, forwards, backwards}
+
+	public GameObject arrow;
+	public List<GameObject> arrows = new List<GameObject>();
+
+
 	// Use this for initialization
 	void Start () {
 		UpdateDirections ();
@@ -80,5 +86,48 @@ public class Position : MonoBehaviour {
 			}
 		}
 		return null;
+	}
+
+	public IEnumerator ShowAvailable(PlayerMovement pm) {
+
+
+		yield return new WaitForSeconds (0.1f);
+		foreach (Position p in neighbourPositions) {
+			GameObject a = Instantiate (arrow, (transform.position + (p.transform.position - transform.position).normalized * 1.2f), Quaternion.identity);
+			if (availableDirections [neighbourPositions.IndexOf (p)].name != "") {
+				a.GetComponentInChildren<TextMeshProUGUI> ().text = availableDirections [neighbourPositions.IndexOf (p)].name;
+			} else {
+				a.GetComponentInChildren<TextMeshProUGUI> ().text = availableDirections [neighbourPositions.IndexOf (p)].dir.ToString ();
+			}
+			arrows.Add (a);
+			a.transform.LookAt (p.transform);
+		}
+
+		pm.isMoving = false;
+
+		while (!pm.isMoving) {
+			int i = 0;
+			foreach (Position p in neighbourPositions) {
+				arrows[i].transform.position = (transform.position + (p.transform.position - transform.position).normalized * 1.2f);
+				//arrows [i].transform.position -= new Vector3 (0, arrows [i].transform.position.y, 0);
+				arrows[i].transform.LookAt (p.transform);
+				i++;
+			}
+			yield return new WaitForSeconds (0.01f);
+		}
+
+		foreach (GameObject a in arrows) {
+			Destroy (a);
+		}
+		arrows.Clear();
+	}
+
+	public void Die() {
+		foreach (Position _pos in neighbourPositions) {
+			_pos.neighbourPositions.Remove (this);
+			_pos.UpdateDirections ();
+		}
+
+		Destroy (gameObject);
 	}
 }

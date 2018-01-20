@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		transform.position = pos.transform.position;
+		StartCoroutine (pos.ShowAvailable (this));
+		isMoving = false;
 	}
 	
 	// Update is called once per frame
@@ -66,16 +68,18 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		pos = p;
+		pos.UpdateDirections ();
+
+
 		yield return new WaitForSeconds (delayBetweenActions);
 
 		isMoving = false;
+		StartCoroutine(pos.ShowAvailable (this));
 	}
 
 	public IEnumerator Action(Position p, string action, string parameter) {
 		yield return new WaitForSeconds (0f);
 		if (p != null) {
-
-			Debug.Log ("IN ACTION");
 
 			if (action == "shoot") {
 				Transform b = Instantiate (bullet, transform.position, Quaternion.identity).transform;
@@ -114,6 +118,8 @@ public class PlayerMovement : MonoBehaviour {
 				yield return new WaitForSeconds (delayBetweenActions);
 
 				isMoving = false;
+
+				StartCoroutine(pos.ShowAvailable (this));
 			}
 		}
 	}
