@@ -74,8 +74,13 @@ public class PlayerMovement : MonoBehaviour {
 	public IEnumerator Action(Position p, string action, string parameter) {
 		yield return new WaitForSeconds (0f);
 		if (p != null) {
+
+			Debug.Log ("IN ACTION");
+
 			if (action == "shoot") {
-				Instantiate (bullet, transform.position, Quaternion.identity).transform.LookAt (p.transform);
+				Transform b = Instantiate (bullet, transform.position, Quaternion.identity).transform;
+				b.transform.LookAt (p.transform);
+				//b.GetComponent<BulletBehaviour> ().speed = Mathf.RoundToInt(b.GetComponent<BulletBehaviour> ().speed * speed);
 			}
 
 			if (action == "sneak") {

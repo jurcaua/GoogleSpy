@@ -49,6 +49,10 @@ public class DatabaseManager : MonoBehaviour {
 
 		if (execute) {
 			if (ActionWords.Contains (lastAction)) {
+				Debug.Log(json[lastID][0]);
+				Debug.Log(json[lastID][1]);
+				Debug.Log(json[lastID][2]);
+				Debug.Log(json[lastID][3]);
 				ttm.TranslateEnemy (lastAction, lastColor, lastSpeed);
 			} else {
 				ttm.Translate (lastAction, lastDelay, lastSpeed);

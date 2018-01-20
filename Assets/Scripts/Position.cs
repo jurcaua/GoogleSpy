@@ -68,7 +68,7 @@ public class Position : MonoBehaviour {
 	public Position isEnemyAvailable(string desc) {
 		foreach (Direction _dir in availableDirections) {
 			if (_dir.position.tag == "Enemy") {
-				if (desc != "") {
+				if (desc != null) {
 					if (_dir.name == desc) {
 						//returns enemy with desired description/color
 						return _dir.position;

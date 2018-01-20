@@ -22,7 +22,7 @@ public class TextToMovement : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown(KeyCode.RightArrow)) {
-			Translate ("right", 0, "quickly");
+			Translate ("right", 0, "");
 		}
 
 		if (Input.GetKeyDown(KeyCode.UpArrow)) {
@@ -62,7 +62,7 @@ public class TextToMovement : MonoBehaviour {
 			return;
 		} 
 
-		if (str == "resume") {
+		if (str == "go") {
 			if (pm.stoppedMovement != null && pm.stopped) {
 				routine = StartCoroutine (pm.moveTowards (pm.stoppedMovement, delayBeforeAction, parameter));
 				pm.stopped = false;
