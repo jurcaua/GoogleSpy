@@ -14,14 +14,14 @@ public class DatabaseManager : MonoBehaviour {
     [Header("Debug")]
     public bool fetchingEnabled = true;
 
-    private string lastID = string.Empty;
+    private string lastID = null;
 
-    private string lastCommandType = string.Empty;
-    private string lastCommand = string.Empty;
-    private string lastDirection = string.Empty;
-    private string lastColor = string.Empty;
-    private string lastObject = string.Empty;
-    private string lastSpeed = string.Empty;
+    private string lastCommandType = null;
+    private string lastCommand = null;
+    private string lastDirection = null;
+    private string lastColor = null;
+    private string lastObject = null;
+    private string lastSpeed = null;
     private int lastDelay = 0;
 
     void Start() {
@@ -35,11 +35,11 @@ public class DatabaseManager : MonoBehaviour {
 
         // set to default values
         lastCommandType = json[lastID][0]; // always a command type
-        lastCommand = string.Empty;
-        lastDirection = string.Empty;
-        lastColor = string.Empty;
-        lastObject = string.Empty;
-        lastSpeed = string.Empty;
+        lastCommand = null;
+        lastDirection = null;
+        lastColor = null;
+        lastObject = null;
+        lastSpeed = null;
         lastDelay = 0;
 
         if (lastCommandType == "position") {
@@ -92,7 +92,7 @@ public class DatabaseManager : MonoBehaviour {
         ids.Sort();
         string latestID = ids[ids.Count - 1];
 
-        if (lastID == string.Empty) {
+        if (lastID == null) {
 
             UpdateValues(json, latestID, false);
 
