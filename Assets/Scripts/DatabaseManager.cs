@@ -9,6 +9,8 @@ public class DatabaseManager : MonoBehaviour {
     public string url = "https://uofthacks-7d047.firebaseio.com/dir/.json";
     public float fetchDelay = 0.5f;
 
+    public TextToMovement ttm;
+
     [Header("Debug")]
     public bool fetchingEnabled = true;
 
@@ -18,37 +20,51 @@ public class DatabaseManager : MonoBehaviour {
     private string lastColor = string.Empty;
     private string lastSpeed = string.Empty;
 
+    private string[] MovementWords = { "forwards", "backwards", "left", "right", "wait", "resume" };
+    private string[] ActionWords = { "shoot", "sneak" };
+
     void Start() {
         StartCoroutine(Fetch());
     }
 
+    void UpdateValues(JSONNode json, string newID) {
+        lastID = newID;              // always have an id
+        lastAction = json[lastID][0];   // always have an action
+        lastDelay = 0;                  // default value
+        lastColor = string.Empty;       // default value
+        lastSpeed = string.Empty;       // default value
+
+        int jsonCount = json[lastID].Children.Count();
+        if (jsonCount > 1 && json[lastID][1] != null) {
+            lastDelay = json[lastID][1];
+        } else {
+            lastDelay = 0;
+        }
+        if (jsonCount > 2) {
+            lastColor = json[lastID][2];
+        }
+        if (jsonCount > 3) {
+            lastSpeed = json[lastID][3];
+        }
+
+        if (ActionWords.Contains(lastAction)) {
+            ttm.TranslateEnemy(lastAction, lastColor, lastSpeed);
+        } else {
+            ttm.Translate(lastAction, lastDelay);
+        }
+    }
+
     void Process(string data) {
 
-        var json = JSON.Parse(data);
+        JSONNode json = JSON.Parse(data);
 
         List<string> ids = json.Keys.ToList();
         ids.Sort();
         string latestID = ids[ids.Count-1];
 
         if (lastID == string.Empty) {
-            lastID = latestID;              // always have an id
-            lastAction = json[lastID][0];   // always have an action
-            lastDelay = 0;                  // default value
-            lastColor = string.Empty;       // default value
-            lastSpeed = string.Empty;       // default value
 
-            int jsonCount = json[lastID].Children.Count();
-            if (jsonCount > 1 && json[lastID][1] != null) {
-                lastDelay = json[lastID][1];
-            } else {
-                lastDelay = 0;
-            }
-            if (jsonCount > 2) {
-                lastColor = json[lastID][2];
-            }
-            if (jsonCount > 3) {
-                lastSpeed = json[lastID][3];
-            }
+            UpdateValues(json, latestID);
 
             Debug.Log("First Latest ID: " + lastID);
             Debug.Log("First Latest Action: " + lastAction);
@@ -57,24 +73,8 @@ public class DatabaseManager : MonoBehaviour {
             Debug.Log("First Latest Speed: " + lastSpeed);
 
         } else if (string.Compare(latestID, lastID, false) > 0) { // if we have a later id
-            lastID = latestID;              // always have an id
-            lastAction = json[lastID][0];   // always have an action
-            lastDelay = 0;                  // default value
-            lastColor = string.Empty;       // default value
-            lastSpeed = string.Empty;       // default value
 
-            int jsonCount = json[lastID].Children.Count();
-            if (jsonCount > 1 && json[lastID][1] != null) {
-                lastDelay = json[lastID][1];
-            } else {
-                lastDelay = 0;
-            }
-            if (jsonCount > 2) {
-                lastColor = json[lastID][2];
-            }
-            if (jsonCount > 3) {
-                lastSpeed = json[lastID][3];
-            }
+            UpdateValues(json, latestID);
 
             Debug.Log("Updated Latest ID: " + lastID);
             Debug.Log("Updated Latest Action: " + lastAction);
