@@ -35,7 +35,9 @@ public class TextToMovement : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			//Translate ("wait", 0);
-			TranslateEnemy ("shoot", "white", "");
+			//TranslateEnemy ("shoot", "white", "");
+			//Debug.Log(pm.pos.getEnemy("left", null));
+			NewTranslate("enemy", "shoot", "left", "blue", 0, "normal");
 		}
 
 		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
@@ -104,6 +106,44 @@ public class TextToMovement : MonoBehaviour {
 			StartCoroutine (pm.Action (p, action, parameter));
 		} else {
 			Debug.Log ("Wait A Second, I'm Still Moving");
+		}
+	}
+
+	public void NewTranslate(string tag, string action, string direction, string name, int delay, string speed) {
+		if (action == "wait") {
+			return;
+		} else if (action == "resume") {
+			return;
+		}
+
+		if (tag == "position") {
+			//movement
+			if ((direction == "right" || direction == "left" || direction == "forwards" || direction == "backwards") && name == null) {
+				NewPosition np = pm.pos.getFixedDirection (direction);
+				StartCoroutine(pm.Move (np, delay, speed));
+			} else {
+				NewPosition np = pm.pos.getPosition (direction, name);
+				if (np != null) {
+					StartCoroutine(pm.Move (np, delay, speed));
+				} else {
+					//No Position Found
+					Debug.Log("ERROR IN FINDING POSITION");
+				}
+			}
+			//NewPosition = 
+		} else {
+			//enemy action
+			NewPosition np = pm.pos.getEnemy(direction, name);
+			if (np != null) {
+				if (action == "shoot") {
+					StartCoroutine(pm.Shoot (np, delay, speed));
+				} else  if (action == "sneak") {
+					StartCoroutine(pm.Sneak (np, delay, speed));
+				}
+			} else {
+				//No Position Found
+				Debug.Log("ERROR IN FINDING ENEMY");
+			}
 		}
 	}
 }

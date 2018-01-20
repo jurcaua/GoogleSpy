@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114220907876533344}
   m_Layer: 0
   m_Name: Obstacle0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   special: 
+  dirs: 
   arrow: {fileID: 1060558652478644, guid: bf1d1c615cc6c9447b0a8b990d50af67, type: 2}
   arrows: []
 --- !u!135 &135623626031005724

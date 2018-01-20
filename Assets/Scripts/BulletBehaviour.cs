@@ -20,7 +20,7 @@ public class BulletBehaviour : MonoBehaviour {
 		
 		Debug.Log (coll.gameObject.name);
 		if (coll.gameObject.tag == "Enemy") {
-			coll.gameObject.GetComponent<Position>().Die ();
+			//coll.gameObject.GetComponent<Position>().Die ();
 			Destroy(gameObject);
 		}
 	}

@@ -53,7 +53,8 @@ public class DatabaseManager : MonoBehaviour {
 
         if (execute) {
             if (ActionWords.Contains(lastAction)) {
-                ttm.TranslateEnemy(lastAction, lastColor, lastSpeed);
+                //ttm.TranslateEnemy(lastAction, lastColor, lastSpeed);
+				ttm.NewTranslate("enemy", lastAction, null, null, lastDelay, lastSpeed);
 			} else if ((lastAction == "go to") || (lastAction == "run to")) {
                 ttm.Translate(lastObject, lastDelay, lastSpeed);
             } else {
