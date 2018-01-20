@@ -15,52 +15,73 @@ public class DatabaseManager : MonoBehaviour {
     public bool fetchingEnabled = true;
 
     private string lastID = string.Empty;
-    private string lastAction = string.Empty;
-    private int lastDelay = 0;
-    private string lastColor = string.Empty;
-    private string lastSpeed = string.Empty;
-    private string lastObject = string.Empty;
 
-    private string[] MovementWords = { "forwards", "backwards", "left", "right", "wait", "resume" };
-    private string[] ActionWords = { "shoot", "sneak" };
+    private string lastCommandType = string.Empty;
+    private string lastCommand = string.Empty;
+    private string lastDirection = string.Empty;
+    private string lastColor = string.Empty;
+    private string lastObject = string.Empty;
+    private string lastSpeed = string.Empty;
+    private int lastDelay = 0;
 
     void Start() {
         StartCoroutine(Fetch());
     }
 
-	void UpdateValues(JSONNode json, string newID, bool execute = true) {
-        lastID = newID;              // always have an id
-        lastAction = json[lastID][0];   // always have an action
-        lastDelay = 0;                  // default value
-        lastColor = string.Empty;       // default value
-        lastSpeed = string.Empty;       // default value
+    void UpdateValues(JSONNode json, string newID, bool execute = true) {
 
-        int jsonCount = json[lastID].Children.Count();
-        if (jsonCount > 1 && json[lastID][1] != null) {
-            lastDelay = json[lastID][1];
-        } else {
-            lastDelay = 0;
-        }
-        if (jsonCount > 2) {
-            lastColor = json[lastID][2];
-        }
-        if (jsonCount > 3) {
-            lastSpeed = json[lastID][3];
-        }
-        if (jsonCount > 4) {
-            lastObject = json[lastID][4];
-        }
+        // new id value
+        lastID = newID;
 
-        if (execute) {
-            if (ActionWords.Contains(lastAction)) {
-                //ttm.TranslateEnemy(lastAction, lastColor, lastSpeed);
-				ttm.NewTranslate("enemy", lastAction, null, null, lastDelay, lastSpeed);
-			} else if ((lastAction == "go to") || (lastAction == "run to")) {
-              //  ttm.Translate(lastObject, lastDelay, lastSpeed);
-            } else {
-               // ttm.Translate(lastAction, lastDelay, lastSpeed);
+        // set to default values
+        lastCommandType = json[lastID][0]; // always a command type
+        lastCommand = string.Empty;
+        lastDirection = string.Empty;
+        lastColor = string.Empty;
+        lastObject = string.Empty;
+        lastSpeed = string.Empty;
+        lastDelay = 0;
+
+        if (lastCommandType == "position") {
+            lastCommand = json[lastID][1];
+            lastDirection = json[lastID][2];
+            lastObject = json[lastID][3];
+            lastSpeed = json[lastID][4];
+            lastDelay = int.Parse(json[lastID][5]);
+
+            if (execute) {
+                ttm.NewTranslate(lastCommandType, lastCommand, lastDirection, lastObject, lastSpeed, lastDelay);
             }
-		}
+
+            Debug.Log("Updated Latest ID: " + lastID);
+            Debug.Log("Updated Latest Command: " + lastCommand);
+            Debug.Log("Updated Latest Direction: " + lastDirection);
+            Debug.Log("Updated Latest Object: " + lastObject);
+            Debug.Log("Updated Latest Speed: " + lastSpeed);
+            Debug.Log("Updated Latest Delay: " + lastDelay);
+
+        } else if (lastCommandType == "enemy") {
+            lastCommand = json[lastID][1];
+            lastDirection = json[lastID][2];
+            lastColor = json[lastID][3];
+            lastSpeed = json[lastID][4];
+            lastDelay = int.Parse(json[lastID][5]);
+
+            if (execute) {
+                ttm.NewTranslate(lastCommandType, lastCommand, lastDirection, lastColor, lastSpeed, lastDelay);
+            }
+
+            Debug.Log("Updated Latest ID: " + lastID);
+            Debug.Log("Updated Latest Command: " + lastCommand);
+            Debug.Log("Updated Latest Direction: " + lastDirection);
+            Debug.Log("Updated Latest Color: " + lastColor);
+            Debug.Log("Updated Latest Speed: " + lastSpeed);
+            Debug.Log("Updated Latest Delay: " + lastDelay);
+
+        } else {
+            Debug.LogWarning("Unknown command: " + lastCommandType);
+            return;
+        }
     }
 
     void Process(string data) {
@@ -69,27 +90,16 @@ public class DatabaseManager : MonoBehaviour {
 
         List<string> ids = json.Keys.ToList();
         ids.Sort();
-        string latestID = ids[ids.Count-1];
+        string latestID = ids[ids.Count - 1];
 
         if (lastID == string.Empty) {
 
-			UpdateValues(json, latestID, false);
-
-            Debug.Log("First Latest ID: " + lastID);
-            Debug.Log("First Latest Action: " + lastAction);
-            Debug.Log("First Latest Delay: " + lastDelay);
-            Debug.Log("First Latest Color: " + lastColor);
-            Debug.Log("First Latest Speed: " + lastSpeed);
+            UpdateValues(json, latestID, false);
 
         } else if (string.Compare(latestID, lastID, false) > 0) { // if we have a later id
 
             UpdateValues(json, latestID);
 
-            Debug.Log("Updated Latest ID: " + lastID);
-            Debug.Log("Updated Latest Action: " + lastAction);
-            Debug.Log("Updated Latest Delay: " + lastDelay);
-            Debug.Log("Updated Latest Color: " + lastColor);
-            Debug.Log("Updated Latest Speed: " + lastSpeed);
         }
     }
 
