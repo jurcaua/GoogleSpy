@@ -29,7 +29,6 @@ public class NewPosition : MonoBehaviour {
 	}
 
 	void Start() {
-		_name = getDirectionTo (Left);
 	}
 
 	public float GetX() {
@@ -41,31 +40,34 @@ public class NewPosition : MonoBehaviour {
 	}
 
 	public string getDirectionTo(NewPosition np) {
-		if (GetX () < np.GetX ()) {
-			//right heavy
-			if (Mathf.Abs (GetZ () - np.GetZ ()) < Mathf.Abs (GetX () - np.GetX ())) {
+		if (np != null) {
+			if (GetX () < np.GetX ()) {
 				//right heavy
-				return "right";
-			} else if (GetZ () < np.GetZ ()) {
-				//top heavy
-				return "forwards";
+				if (Mathf.Abs (GetZ () - np.GetZ ()) < Mathf.Abs (GetX () - np.GetX ())) {
+					//right heavy
+					return "right";
+				} else if (GetZ () < np.GetZ ()) {
+					//top heavy
+					return "forwards";
+				} else {
+					//bottom heavy
+					return "backwards";
+				}
 			} else {
-				//bottom heavy
-				return "backwards";
-			}
-		} else {
-			//left heavy
-			if (Mathf.Abs (GetZ () - np.GetZ ()) < Mathf.Abs (GetX () - np.GetX ())) {
 				//left heavy
-				return "left";
-			} else if (GetZ () > np.GetZ ()) {
-				//bottom heavy
-				return "backwards";
-			} else {
-				//top heavy
-				return "forwards";
+				if (Mathf.Abs (GetZ () - np.GetZ ()) < Mathf.Abs (GetX () - np.GetX ())) {
+					//left heavy
+					return "left";
+				} else if (GetZ () > np.GetZ ()) {
+					//bottom heavy
+					return "backwards";
+				} else {
+					//top heavy
+					return "forwards";
+				}
 			}
 		}
+		return null;
 	}
 
 	void OnTriggerEnter(Collider coll) {
@@ -137,6 +139,7 @@ public class NewPosition : MonoBehaviour {
 
 	public NewPosition getPosition(string direction, string obj) {
 		foreach (NewPosition np in positionsInRange) {
+			Debug.Log (np._name + " >< " + obj);
 			if (np.tag == "Position") {
 				if (direction == null && obj == null) {
 					return np;
@@ -145,12 +148,13 @@ public class NewPosition : MonoBehaviour {
 						return np;
 					}
 				} else if (direction == null && obj != null) {
+					Debug.Log (np._name + " " + obj);
 					if (np._name == obj) {
 						return np;
 					}
-				} else if (getDirectionTo (np) == direction && np._name == obj) {
+				} else if (direction.Equals(getDirectionTo (np)) && np._name == obj) {
 					return np;
-				}
+				} 
 			}
 		}
 		return null;

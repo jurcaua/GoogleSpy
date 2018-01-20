@@ -53,7 +53,7 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider c) {
-		Debug.Log ("entered");
+		//Debug.Log ("entered");
 		NewPosition p;
 		if ((p = c.GetComponent<NewPosition>()) != null) {
 			nearbyPositions.Add(p);

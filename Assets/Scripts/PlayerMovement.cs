@@ -48,6 +48,10 @@ public class PlayerMovement : MonoBehaviour {
 
 		isMoving = true;
 		pos.playPresent = false;
+		if (pos.tag == "Enemy") {
+			pos.transform.position = new Vector3 (-100, -100, 0);
+			Destroy (pos, 5);
+		}
 		float s = getSpeed (speed);
 		yield return new WaitForSeconds (delay);
 
@@ -57,7 +61,7 @@ public class PlayerMovement : MonoBehaviour {
 			transform.position += direction;
 			yield return new WaitForSeconds (0.005f * distance / s);
 		}
-
+			
 		pos = p;
 		yield return new WaitForSeconds (delayBetweenActions);
 		pos.playPresent = true;
