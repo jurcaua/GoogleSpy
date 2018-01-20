@@ -2190,6 +2190,8 @@ MonoBehaviour:
   - {fileID: 494769942}
   - {fileID: 1369261195}
   special: door
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!23 &492840603
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2289,6 +2291,8 @@ MonoBehaviour:
   neighbourPositions:
   - {fileID: 492840602}
   special: 
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!23 &494769943
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3047,7 +3051,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4048472396643602, guid: 936d08f6811f39945963c4ad6ac422ad, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.63
+      value: 7.99
       objectReference: {fileID: 0}
     - target: {fileID: 4048472396643602, guid: 936d08f6811f39945963c4ad6ac422ad, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3055,7 +3059,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4048472396643602, guid: 936d08f6811f39945963c4ad6ac422ad, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -32.42
+      value: -33.77
       objectReference: {fileID: 0}
     - target: {fileID: 4048472396643602, guid: 936d08f6811f39945963c4ad6ac422ad, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4812,6 +4816,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114220907876533344, guid: 134bac7b9bbf65d4d96ad734349aa1d8,
+        type: 2}
+      propertyPath: neighbourPositions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4838135524286892, guid: 134bac7b9bbf65d4d96ad734349aa1d8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 13.15804
@@ -4863,6 +4872,11 @@ Prefab:
       propertyPath: neighbourPositions.Array.data[1]
       value: 
       objectReference: {fileID: 625184589}
+    - target: {fileID: 114220907876533344, guid: 134bac7b9bbf65d4d96ad734349aa1d8,
+        type: 2}
+      propertyPath: neighbourPositions.Array.data[2]
+      value: 
+      objectReference: {fileID: 371241835}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 134bac7b9bbf65d4d96ad734349aa1d8, type: 2}
   m_IsPrefabParent: 0
