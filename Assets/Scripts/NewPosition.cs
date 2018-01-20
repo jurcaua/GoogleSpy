@@ -25,6 +25,8 @@ public class NewPosition : MonoBehaviour {
 					Debug.DrawLine (transform.position, np.transform.position, Color.blue);
 				} else if (np.tag == "Position") { 
 					Debug.DrawLine (transform.position, np.transform.position, Color.red);
+				} else {
+					//positionsInRange.Remove (np);
 				}
 			}
 		}
@@ -74,13 +76,15 @@ public class NewPosition : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll) {
 		//positionsInRange.Clear ();
-		if (coll.tag == "Enemy" || coll.tag == "Position" && possiblePositions.Contains(coll.GetComponent<NewPosition> ())) {
+		//if// ((transform.tag == "Enemy" && (coll.tag == "Enemy" || coll.tag == "Position")) || (possiblePositions.Contains(coll.GetComponent<NewPosition> ())  && (coll.tag == "Enemy" || coll.tag == "Position"))) {
+		if ((possiblePositions.Contains(coll.GetComponent<NewPosition> ())  && (coll.tag == "Enemy" || coll.tag == "Position"))) {
 			positionsInRange.Add (coll.GetComponent<NewPosition> ());
 		}
 	}
 
 	void OnTriggerExit(Collider coll) {
-		if (coll.tag == "Enemy" || coll.tag == "Position" && possiblePositions.Contains(coll.GetComponent<NewPosition> ())) {
+	//	if ( (transform.tag == "Enemy" && (coll.tag == "Enemy" || coll.tag == "Position")) || (possiblePositions.Contains(coll.GetComponent<NewPosition> ())  && (coll.tag == "Enemy" || coll.tag == "Position"))) {
+		if ((possiblePositions.Contains(coll.GetComponent<NewPosition> ())  && (coll.tag == "Enemy" || coll.tag == "Position"))) {
 			positionsInRange.Remove (coll.GetComponent<NewPosition> ());
 		}
 	}
@@ -141,7 +145,6 @@ public class NewPosition : MonoBehaviour {
 
 	public NewPosition getPosition(string direction, string obj) {
 		foreach (NewPosition np in positionsInRange) {
-			Debug.Log (np._name + " >< " + obj);
 			if (np.tag == "Position") {
 				if (direction == null && obj == null) {
 					return np;

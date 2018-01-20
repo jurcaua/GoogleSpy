@@ -50,8 +50,8 @@ public class PlayerMovement : MonoBehaviour {
 		pos.playPresent = false;
 		stoppedMovement = p;
 		if (pos.tag == "Enemy") {
-			pos.transform.position = new Vector3 (-100, -100, 0);
-			Destroy (pos, 5);
+			pos.transform.position = new Vector3 (pos.transform.position.x, -0.5f, pos.transform.position.z);
+			pos.tag = "Position";
 		}
 		float s = getSpeed (speed);
 		yield return new WaitForSeconds (delay);
@@ -142,7 +142,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		
 		pos = p;
-		p.GetComponent<MeshRenderer> ().enabled = false;
+		//p.GetComponent<MeshRenderer> ().enabled = false;
+
 		//p.UpdateDirections ();
 		
 		//p.tag = "Untagged";
@@ -207,7 +208,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float getSpeed(string speed) {
 		float s = 1f;
 		if (speed == "quickly") {
-			s = 2.5f;
+			s = 2f;
 		} else if (speed == "slowly") {
 			s = 0.3f;
 		}
