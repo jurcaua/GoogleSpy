@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 	public bool queueable;
 	public float speed;
 
-	//public Position stoppedMovement;
+	public NewPosition stoppedMovement;
 	public bool stopped;
 
 	public GameObject bullet;
@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		isMoving = true;
 		pos.playPresent = false;
+		stoppedMovement = p;
 		if (pos.tag == "Enemy") {
 			pos.transform.position = new Vector3 (-100, -100, 0);
 			Destroy (pos, 5);
@@ -123,10 +124,11 @@ public class PlayerMovement : MonoBehaviour {
 
 		float s = getSpeed (speed);
 		pos.playPresent = false;
+
 		yield return new WaitForSeconds (delay);
 
 		isMoving = true;
-		
+		stoppedMovement = p;
 		float distance = Vector3.Distance (transform.position, p.transform.position);
 		Vector3 direction = (p.transform.position - transform.position) / 100;
 		for (int i = 0; i < 100; i++) {

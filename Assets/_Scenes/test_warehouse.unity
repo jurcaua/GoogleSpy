@@ -136,6 +136,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!54 &16552622
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -438,6 +439,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!1001 &41086489
 Prefab:
   m_ObjectHideFlags: 0
@@ -1358,19 +1360,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2f7876958dd570642ae79ba1154a85cc, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2f7876958dd570642ae79ba1154a85cc, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2f7876958dd570642ae79ba1154a85cc, type: 2}
-      propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2f7876958dd570642ae79ba1154a85cc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710653
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2f7876958dd570642ae79ba1154a85cc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2f7876958dd570642ae79ba1154a85cc, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.7071068
+      value: -0.70710707
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2f7876958dd570642ae79ba1154a85cc, type: 2}
       propertyPath: m_RootOrder
@@ -1378,7 +1380,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2f7876958dd570642ae79ba1154a85cc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
+      value: 450
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f7876958dd570642ae79ba1154a85cc, type: 2}
@@ -1679,6 +1681,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!1001 &302410899
 Prefab:
   m_ObjectHideFlags: 0
@@ -1950,6 +1953,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!54 &335255147
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2110,6 +2114,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!1001 &336311213
 Prefab:
   m_ObjectHideFlags: 0
@@ -2699,6 +2704,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!54 &485515464
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2828,6 +2834,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!23 &492840603
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2947,6 +2954,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!23 &494769943
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3719,6 +3727,10 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1880099950}
+  - {fileID: 852174938}
+  - {fileID: 740258823}
 --- !u!54 &618896600
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4841,6 +4853,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!1 &740258822 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1337993069215690, guid: 134bac7b9bbf65d4d96ad734349aa1d8,
@@ -4857,13 +4870,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: stairs
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 852174938}
+  - {fileID: 618896599}
+  - {fileID: 1696845760}
 --- !u!54 &740258824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5058,6 +5075,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!54 &807855787
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5146,6 +5164,9 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 618896599}
+  - {fileID: 740258823}
 --- !u!54 &852174939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5330,6 +5351,7 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions: []
 --- !u!54 &896424532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5528,6 +5550,10 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 2014405179}
+  - {fileID: 2036112867}
+  - {fileID: 1105312564}
 --- !u!54 &977586825
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6009,6 +6035,9 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1647870320}
+  - {fileID: 0}
 --- !u!54 &1104290086
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6047,6 +6076,8 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 977586824}
 --- !u!54 &1105312565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6228,6 +6259,9 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1275625534}
+  - {fileID: 1960016490}
 --- !u!54 &1131437621
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6982,6 +7016,10 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1131437620}
+  - {fileID: 1960016490}
+  - {fileID: 1810110238}
 --- !u!54 &1275625535
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7469,13 +7507,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: stairs
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1696845760}
+  - {fileID: 2036112867}
 --- !u!54 &1361486968
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8929,13 +8970,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: container
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1104290085}
+  - {fileID: 1960016490}
 --- !u!54 &1647870321
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9306,13 +9350,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: stairs
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 740258823}
+  - {fileID: 1361486967}
 --- !u!54 &1696845761
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9833,6 +9880,9 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1275625534}
+  - {fileID: 1880099950}
 --- !u!54 &1810110239
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10220,13 +10270,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: container
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1810110238}
+  - {fileID: 618896599}
 --- !u!54 &1880099951
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10659,13 +10712,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: metal
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1131437620}
+  - {fileID: 1275625534}
 --- !u!54 &1960016491
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11073,6 +11129,8 @@ MonoBehaviour:
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 2036112867}
 --- !u!54 &2014405180
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11216,13 +11274,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: stairs
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
   Backwards: {fileID: 0}
   playPresent: 0
   positionsInRange: []
+  possiblePositions:
+  - {fileID: 1361486967}
+  - {fileID: 2014405179}
+  - {fileID: 977586824}
 --- !u!54 &2036112868
 Rigidbody:
   m_ObjectHideFlags: 0

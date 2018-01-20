@@ -15,6 +15,8 @@ public class NewPosition : MonoBehaviour {
 	public bool playPresent;
 
 	public List<NewPosition> positionsInRange = new List<NewPosition>();
+	public List<NewPosition> possiblePositions = new List<NewPosition>();
+
 
 	void Update() {
 		if (playPresent) {
@@ -72,13 +74,13 @@ public class NewPosition : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll) {
 		//positionsInRange.Clear ();
-		if (coll.tag == "Enemy" || coll.tag == "Position") {
+		if (coll.tag == "Enemy" || coll.tag == "Position" && possiblePositions.Contains(coll.GetComponent<NewPosition> ())) {
 			positionsInRange.Add (coll.GetComponent<NewPosition> ());
 		}
 	}
 
 	void OnTriggerExit(Collider coll) {
-		if (coll.tag == "Enemy" || coll.tag == "Position") {
+		if (coll.tag == "Enemy" || coll.tag == "Position" && possiblePositions.Contains(coll.GetComponent<NewPosition> ())) {
 			positionsInRange.Remove (coll.GetComponent<NewPosition> ());
 		}
 	}

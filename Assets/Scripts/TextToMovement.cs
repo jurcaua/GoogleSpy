@@ -116,38 +116,54 @@ public class TextToMovement : MonoBehaviour {
 	public void NewTranslate (string tag, string action, string direction, string name, string speed, int delay)
 	{
 		if (action == "wait") {
+			StopCoroutine (routine);
 			return;
 		} else if (action == "resume") {
+			routine = StartCoroutine (pm.Move (pm.stoppedMovement, delay, speed));
 			return;
 		}
 
 		if (tag == "position") {
 			//movement
-			if ((direction == "right" || direction == "left" || direction == "forwards" || direction == "backwards") && name != null) {
-				Debug.Log ("GOOD IN");
-				NewPosition np = pm.pos.getFixedDirection (direction);
-				if (np != null) {
-					if (action == "run to") {
-						StartCoroutine (pm.Move (np, delay, "quickly"));
-					} else {
-						StartCoroutine (pm.Move (np, delay, speed));
-					}
-				}
-			} else {
-				Debug.Log ("INHERE");
-				NewPosition np = pm.pos.getPosition (direction, name);
-				if (np != null) {
-					if (action == "run to") {
-						StartCoroutine (pm.Move (np, delay, "quickly"));
-					} else {
-						StartCoroutine (pm.Move (np, delay, speed));
-					}
+
+			NewPosition np = pm.pos.getPosition (direction, name);
+			if (np != null) {
+				if (action == "run to") {
+					routine = StartCoroutine (pm.Move (np, delay, "quickly"));
 				} else {
-					//No Position Found
-					Debug.Log ("ERROR IN FINDING POSITION");
+					routine = StartCoroutine (pm.Move (np, delay, speed));
 				}
-			
+			} else { 
+				Debug.Log ("ERROR IN FINDING POSITION");
 			}
+
+//
+//
+//			if ((direction == "right" || direction == "left" || direction == "forwards" || direction == "backwards") && name != null) {
+//				Debug.Log ("GOOD IN");
+//				NewPosition np = pm.pos.getFixedDirection (direction);
+//				if (np != null) {
+//					if (action == "run to") {
+//						StartCoroutine (pm.Move (np, delay, "quickly"));
+//					} else {
+//						StartCoroutine (pm.Move (np, delay, speed));
+//					}
+//				}
+//			} else {
+//				Debug.Log("INHERE");
+//				NewPosition np = pm.pos.getPosition (direction, name);
+//				if (np != null) {
+//					if (action == "run to") {
+//						StartCoroutine (pm.Move (np, delay, "quickly"));
+//					} else {
+//						StartCoroutine (pm.Move (np, delay, speed));
+//					}
+//				} else {
+//					//No Position Found
+//					Debug.Log ("ERROR IN FINDING POSITION");
+//				}
+			
+
 				
 				//NewPosition = 
 			} else {
@@ -155,9 +171,9 @@ public class TextToMovement : MonoBehaviour {
 				NewPosition np = pm.pos.getEnemy (direction, name);
 				if (np != null) {
 					if (action == "shoot") {
-						StartCoroutine (pm.Shoot (np, delay, speed));
+						routine = StartCoroutine (pm.Shoot (np, delay, speed));
 					} else if (action == "sneak") {
-						StartCoroutine (pm.Sneak (np, delay, speed));
+						routine = StartCoroutine (pm.Sneak (np, delay, speed));
 					}
 				} else {
 					//No Position Found
