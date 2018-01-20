@@ -3258,7 +3258,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4048472396643602, guid: 936d08f6811f39945963c4ad6ac422ad, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.99
+      value: 9.71
       objectReference: {fileID: 0}
     - target: {fileID: 4048472396643602, guid: 936d08f6811f39945963c4ad6ac422ad, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3266,7 +3266,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4048472396643602, guid: 936d08f6811f39945963c4ad6ac422ad, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -33.77
+      value: -32.19
       objectReference: {fileID: 0}
     - target: {fileID: 4048472396643602, guid: 936d08f6811f39945963c4ad6ac422ad, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3298,6 +3298,11 @@ Prefab:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 490378153}
+    - target: {fileID: 23894884056137246, guid: 936d08f6811f39945963c4ad6ac422ad,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2a79058b29b9c0545956a0469dc97ac4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 936d08f6811f39945963c4ad6ac422ad, type: 2}
   m_IsPrefabParent: 0
@@ -5429,7 +5434,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1081744299}
   m_LocalRotation: {x: 0.5298081, y: 0.00000041441842, z: -0.00000028449696, w: 0.8481176}
-  m_LocalPosition: {x: 7.99, y: 22.550001, z: -44.190002}
+  m_LocalPosition: {x: 9.71, y: 22.550001, z: -42.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10864,7 +10869,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2096301168}
   m_LocalRotation: {x: 0.5298081, y: 0.00000041441842, z: -0.00000028449696, w: 0.8481176}
-  m_LocalPosition: {x: 7.99, y: 22.550001, z: -44.190002}
+  m_LocalPosition: {x: 9.71, y: 22.550001, z: -42.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1990030703}
