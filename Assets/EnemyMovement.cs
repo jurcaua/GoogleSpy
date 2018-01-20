@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour {
 	public Coroutine routine;
 	public bool ascending;
 
-	public List<Position> nearbyPositions = new List<Position> ();
+	public List<NewPosition> nearbyPositions = new List<NewPosition> ();
 	// Use this for initialization
 	void Start () {
 		routine = StartCoroutine (FollowItirenary ());
@@ -54,15 +54,15 @@ public class EnemyMovement : MonoBehaviour {
 
 	void OnTriggerEnter(Collider c) {
 		Debug.Log ("entered");
-		Position p;
-		if ((p = c.GetComponent<Position>()) != null) {
+		NewPosition p;
+		if ((p = c.GetComponent<NewPosition>()) != null) {
 			nearbyPositions.Add(p);
 		}
 	}
 
 	void OnTriggerExit(Collider c) {
-		Position p;
-		if ((p = c.GetComponent<Position>()) != null) {
+		NewPosition p;
+		if ((p = c.GetComponent<NewPosition>()) != null) {
 			nearbyPositions.Remove(p);
 		}
 	}

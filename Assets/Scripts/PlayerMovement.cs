@@ -45,7 +45,23 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	public IEnumerator Move(NewPosition p, int delay, string speed) {
 		Debug.Log ("Moving Towards: " + p + " with delay: " + delay + " and speed " + speed);
+
+		isMoving = true;
+		pos.playPresent = false;
+		float s = getSpeed (speed);
+		yield return new WaitForSeconds (delay);
+
+		float distance = Vector3.Distance (transform.position, p.transform.position);
+		Vector3 direction = (p.transform.position - transform.position) / 50;
+		for (int i = 0; i < 50; i++) {
+			transform.position += direction;
+			yield return new WaitForSeconds (0.005f * distance / s);
+		}
+
+		pos = p;
 		yield return new WaitForSeconds (delayBetweenActions);
+		pos.playPresent = true;
+		isMoving = false;
 	}
 
 //	public IEnumerator moveTowards(Position p, int delayBeforeAction, string parameter) {
@@ -102,6 +118,7 @@ public class PlayerMovement : MonoBehaviour {
 		Debug.Log ("Sneak: " + p + " with delay: " + delay + " and speed " + speed);
 
 		float s = getSpeed (speed);
+		pos.playPresent = false;
 		yield return new WaitForSeconds (delay);
 
 		isMoving = true;
@@ -127,7 +144,8 @@ public class PlayerMovement : MonoBehaviour {
 		//p.GetComponent<EnemyMovement> ().routine = null;
 		
 		yield return new WaitForSeconds (delayBetweenActions);
-		
+
+		pos.playPresent = true;
 		isMoving = false;
 		
 	}

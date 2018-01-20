@@ -18,35 +18,39 @@ public class TextToMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-			Translate ("left", 0, "");
+			//Translate ("left", 0, "");
+			NewTranslate("position", "go to", "left", null, 0, "normal");
 		}
 
 		if (Input.GetKeyDown(KeyCode.RightArrow)) {
-			Translate ("right", 0, "");
+			//Translate ("right", 0, "");
+			NewTranslate("position", "go to", "right", null, 0, "normal");
 		}
 
 		if (Input.GetKeyDown(KeyCode.UpArrow)) {
-			Translate ("forwards", 0, "");
+			//Translate ("forwards", 0, "");
+			NewTranslate("position", "go to", "forwards", null, 0, "normal");
 		}
 
 		if (Input.GetKeyDown(KeyCode.DownArrow)) {
-			Translate ("backwards", 0, "");
+			//Translate ("backwards", 0, "");
+			NewTranslate("position", "go to", "backwards", null, 0, "normal");
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			//Translate ("wait", 0);
 			//TranslateEnemy ("shoot", "white", "");
 			//Debug.Log(pm.pos.getEnemy("left", null));
-			NewTranslate("enemy", "shoot", "left", "blue", 0, "normal");
+			NewTranslate("enemy", "sneak", null, null, 0, "normal");
 		}
 
 		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
-			TranslateEnemy ("sneak", null, "");
+			//TranslateEnemy ("sneak", null, "");
 		}
 
 		if (!pm.isMoving && pm.futureActions.Count > 0) {
-			Translate (pm.futureActions [0], 0, "");
-			pm.futureActions.RemoveAt (0);
+			//Translate (pm.futureActions [0], 0, "");
+			//pm.futureActions.RemoveAt (0);
 			//pm.isMoving = true;
 		}
 	}

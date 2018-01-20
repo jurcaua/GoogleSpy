@@ -56,9 +56,9 @@ public class DatabaseManager : MonoBehaviour {
                 //ttm.TranslateEnemy(lastAction, lastColor, lastSpeed);
 				ttm.NewTranslate("enemy", lastAction, null, null, lastDelay, lastSpeed);
 			} else if ((lastAction == "go to") || (lastAction == "run to")) {
-                ttm.Translate(lastObject, lastDelay, lastSpeed);
+              //  ttm.Translate(lastObject, lastDelay, lastSpeed);
             } else {
-                ttm.Translate(lastAction, lastDelay, lastSpeed);
+               // ttm.Translate(lastAction, lastDelay, lastSpeed);
             }
 		}
     }

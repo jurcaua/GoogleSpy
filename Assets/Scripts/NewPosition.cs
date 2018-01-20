@@ -81,13 +81,13 @@ public class NewPosition : MonoBehaviour {
 		}
 	}
 
-	public Position isAvailable(string str) {
-		return null;
-	}
-
-	public Position isEnemyAvailable(string str) {
-		return null;
-	}
+//	public Position isAvailable(string str) {
+//		return null;
+//	}
+//
+//	public Position isEnemyAvailable(string str) {
+//		return null;
+//	}
 
 	public NewPosition getFixedDirection(string direction) {
 		if (direction == "right") {
