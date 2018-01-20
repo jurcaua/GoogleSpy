@@ -27,7 +27,7 @@ public class DatabaseManager : MonoBehaviour {
         StartCoroutine(Fetch());
     }
 
-    void UpdateValues(JSONNode json, string newID) {
+	void UpdateValues(JSONNode json, string newID, bool execute = true) {
         lastID = newID;              // always have an id
         lastAction = json[lastID][0];   // always have an action
         lastDelay = 0;                  // default value
@@ -47,11 +47,13 @@ public class DatabaseManager : MonoBehaviour {
             lastSpeed = json[lastID][3];
         }
 
-        if (ActionWords.Contains(lastAction)) {
-            ttm.TranslateEnemy(lastAction, lastColor, lastSpeed);
-        } else {
-            ttm.Translate(lastAction, lastDelay, "");
-        }
+		if (execute) {
+			if (ActionWords.Contains (lastAction)) {
+				ttm.TranslateEnemy (lastAction, lastColor, lastSpeed);
+			} else {
+				ttm.Translate (lastAction, lastDelay, "");
+			}
+		}
     }
 
     void Process(string data) {
@@ -64,7 +66,7 @@ public class DatabaseManager : MonoBehaviour {
 
         if (lastID == string.Empty) {
 
-            UpdateValues(json, latestID);
+			UpdateValues(json, latestID, false);
 
             Debug.Log("First Latest ID: " + lastID);
             Debug.Log("First Latest Action: " + lastAction);

@@ -18,11 +18,11 @@ public class TextToMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-			Translate ("left", 0, "");
+			Translate ("left", 0, "slowly");
 		}
 
 		if (Input.GetKeyDown(KeyCode.RightArrow)) {
-			Translate ("right", 0, "");
+			Translate ("right", 0, "quickly");
 		}
 
 		if (Input.GetKeyDown(KeyCode.UpArrow)) {
