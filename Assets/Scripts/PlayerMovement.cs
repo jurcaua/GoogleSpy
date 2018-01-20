@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		float speed = 1f;
 		if (parameter == "quickly") {
-			speed = 5f;
+			speed = 2.5f;
 		} else if (parameter == "slowly") {
 			speed = 0.3f;
 		}

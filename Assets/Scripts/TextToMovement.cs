@@ -62,7 +62,7 @@ public class TextToMovement : MonoBehaviour {
 			return;
 		} 
 
-		if (str == "go") {
+		if (str == "resume") {
 			if (pm.stoppedMovement != null && pm.stopped) {
 				routine = StartCoroutine (pm.moveTowards (pm.stoppedMovement, delayBeforeAction, parameter));
 				pm.stopped = false;
@@ -84,7 +84,11 @@ public class TextToMovement : MonoBehaviour {
 				//player.transform.position = p.transform.position;
 				//pm.pos = p;
 				Debug.Log ("Going to " + p.name + " in " + delayBeforeAction + " seconds");
-				routine = StartCoroutine (pm.moveTowards (p, delayBeforeAction, parameter));
+				if (str == "run to") {
+					routine = StartCoroutine (pm.moveTowards (p, delayBeforeAction, "quickly"));
+				} else {
+					routine = StartCoroutine (pm.moveTowards (p, delayBeforeAction, parameter));
+				}
 			}
 		} else if (pm.queueable) {
 			Debug.Log ("Wait A Second, I'm Still Moving");
