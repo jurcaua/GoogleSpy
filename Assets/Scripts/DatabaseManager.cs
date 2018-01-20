@@ -19,6 +19,7 @@ public class DatabaseManager : MonoBehaviour {
     private int lastDelay = 0;
     private string lastColor = string.Empty;
     private string lastSpeed = string.Empty;
+    private string lastObject = string.Empty;
 
     private string[] MovementWords = { "forwards", "backwards", "left", "right", "wait", "resume" };
     private string[] ActionWords = { "shoot", "sneak" };
@@ -46,17 +47,18 @@ public class DatabaseManager : MonoBehaviour {
         if (jsonCount > 3) {
             lastSpeed = json[lastID][3];
         }
+        if (jsonCount > 4) {
+            lastObject = json[lastID][4];
+        }
 
-		if (execute) {
-			if (ActionWords.Contains (lastAction)) {
-				Debug.Log(json[lastID][0]);
-				Debug.Log(json[lastID][1]);
-				Debug.Log(json[lastID][2]);
-				Debug.Log(json[lastID][3]);
-				ttm.TranslateEnemy (lastAction, lastColor, lastSpeed);
-			} else {
-				ttm.Translate (lastAction, lastDelay, lastSpeed);
-			}
+        if (execute) {
+            if (ActionWords.Contains(lastAction)) {
+                ttm.TranslateEnemy(lastAction, lastColor, lastSpeed);
+            } else if (lastAction == "go to") {
+                ttm.Translate(lastObject, lastDelay, lastSpeed);
+            } else {
+                ttm.Translate(lastAction, lastDelay, lastSpeed);
+            }
 		}
     }
 
