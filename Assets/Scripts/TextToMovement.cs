@@ -19,29 +19,29 @@ public class TextToMovement : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
 			//Translate ("left", 0, "");
-			NewTranslate("position", "go to", "left", null, 0, "normal");
+			NewTranslate("position", "go to", "left", null, "normal",0);
 		}
 
 		if (Input.GetKeyDown(KeyCode.RightArrow)) {
 			//Translate ("right", 0, "");
-			NewTranslate("position", "go to", "right", null, 0, "normal");
+			NewTranslate("position", "go to", "right", null, "normal",0);
 		}
 
 		if (Input.GetKeyDown(KeyCode.UpArrow)) {
 			//Translate ("forwards", 0, "");
-			NewTranslate("position", "go to", "forwards", null, 0, "normal");
+			NewTranslate("position", "go to", "forwards", null, "normal",0);
 		}
 
 		if (Input.GetKeyDown(KeyCode.DownArrow)) {
 			//Translate ("backwards", 0, "");
-			NewTranslate("position", "go to", "backwards", null, 0, "normal");
+			NewTranslate("position", "go to", "backwards", null, "normal",0);
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			//Translate ("wait", 0);
 			//TranslateEnemy ("shoot", "white", "");
 			//Debug.Log(pm.pos.getEnemy("left", null));
-			NewTranslate("enemy", "sneak", null, null, 0, "normal");
+			NewTranslate("enemy", "sneak", null, null, "normal",0);
 		}
 
 		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
@@ -113,7 +113,7 @@ public class TextToMovement : MonoBehaviour {
 //		}
 //	}
 
-	public void NewTranslate(string tag, string action, string direction, string name, int delay, string speed) {
+	public void NewTranslate(string tag, string action, string direction, string name, string speed, int delay) {
 		if (action == "wait") {
 			return;
 		} else if (action == "resume") {
@@ -123,11 +123,16 @@ public class TextToMovement : MonoBehaviour {
 		if (tag == "position") {
 			//movement
 			if ((direction == "right" || direction == "left" || direction == "forwards" || direction == "backwards") && name == null) {
+				
 				NewPosition np = pm.pos.getFixedDirection (direction);
-				if (action == "run to") {
-					StartCoroutine (pm.Move (np, delay, "quickly"));
+				if (np != null) {
+					if (action == "run to") {
+						StartCoroutine (pm.Move (np, delay, "quickly"));
+					} else {
+						StartCoroutine (pm.Move (np, delay, speed));
+					}
 				} else {
-					StartCoroutine (pm.Move (np, delay, speed));
+					Debug.Log ("POSITION NOT FOUND");
 				}
 			} else {
 				NewPosition np = pm.pos.getPosition (direction, name);
