@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: corner
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
@@ -1947,7 +1947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: crate
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
@@ -2698,7 +2698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: corner
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
@@ -3721,7 +3721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: crate
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
@@ -5158,7 +5158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: barrel
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
@@ -5345,7 +5345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: metal
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
@@ -5914,8 +5914,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1081744299}
-  m_LocalRotation: {x: 0.5298081, y: 0.00000041441842, z: -0.00000028449696, w: 0.8481176}
-  m_LocalPosition: {x: 9.71, y: 22.550001, z: -42.61}
+  m_LocalRotation: {x: 0.42622563, y: 0.0000004450429, z: -0.00000023370475, w: 0.90461695}
+  m_LocalPosition: {x: 9.71, y: 13.82, z: -42.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6029,7 +6029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: door
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
@@ -6253,7 +6253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197794b68d11c55448e1c3f1a9ac885d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: pillar
   Left: {fileID: 0}
   Right: {fileID: 0}
   Forwards: {fileID: 0}
@@ -10898,7 +10898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 21.35, z: -10.42}
+  m_FollowOffset: {x: 0, y: 12.62, z: -10.42}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -11778,8 +11778,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2096301168}
-  m_LocalRotation: {x: 0.5298081, y: 0.00000041441842, z: -0.00000028449696, w: 0.8481176}
-  m_LocalPosition: {x: 9.71, y: 22.550001, z: -42.61}
+  m_LocalRotation: {x: 0.42622563, y: 0.0000004450429, z: -0.00000023370475, w: 0.90461695}
+  m_LocalPosition: {x: 9.71, y: 13.82, z: -42.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1990030703}
