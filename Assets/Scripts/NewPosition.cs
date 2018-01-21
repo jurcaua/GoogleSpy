@@ -43,7 +43,7 @@ public class NewPosition : MonoBehaviour {
 				}
 			}
 		}
-		if (transform.tag == "Position") {
+		if (transform.tag == "Position" && transform.childCount > 0) {
 			if (PlayerMovement.lookingAt.Contains (this)) {
 				transform.GetChild (0).gameObject.SetActive (true);
 			} else {
