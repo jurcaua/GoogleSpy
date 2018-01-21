@@ -147,11 +147,7 @@ public class NewPosition : MonoBehaviour {
 
 	public NewPosition getEnemy(string direction, string color) {
 
-//		if (color == null) {
-//			if (getFixedDirection (direction) != null) {
-//				return getFixedDirection (direction);
-//			}
-//		}
+
 
 		foreach (NewPosition np in positionsInRange) {
 			if (np.tag == "Enemy") {
@@ -174,6 +170,12 @@ public class NewPosition : MonoBehaviour {
 	}
 
 	public NewPosition getPosition(string direction, string obj) {
+			if (obj == null) {
+				if (getFixedDirection (direction) != null) {
+					return getFixedDirection (direction);
+				}
+			}
+
 		foreach (NewPosition np in positionsInRange) {
 			if (np.tag == "Position") {
 				if (direction == null && obj == null) {
