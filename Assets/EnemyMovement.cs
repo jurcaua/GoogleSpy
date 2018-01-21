@@ -28,6 +28,8 @@ public class EnemyMovement : MonoBehaviour {
 				//go to a point
 				float distance = Vector3.Distance (transform.position, itinerary [index].position);
 				Vector3 direction = (itinerary [index].position - transform.position) / 50;
+
+				transform.rotation = Quaternion.LookRotation (direction);
 				for (int i = 0; i < 50; i++) {
 					transform.position += direction;
 					yield return new WaitForSeconds (0.005f * distance * 2);

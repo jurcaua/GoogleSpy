@@ -24,6 +24,7 @@ public class BulletBehaviour : MonoBehaviour {
 			if (coll.isTrigger == false) {
 				//Destroy (coll.gameObject);
 				coll.transform.tag = "Untagged";
+				coll.transform.GetChild (0).gameObject.SetActive (false);
 				Destroy (gameObject);
 			}
 		}

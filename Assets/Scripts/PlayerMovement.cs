@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -15,18 +16,22 @@ public class PlayerMovement : MonoBehaviour {
 	public bool stopped;
 
 	public GameObject bullet;
+	public TextToMovement ttm;
 
 	//public float delayBeforeAction;
 	public float delayBetweenActions;
 
 	public List<string> futureActions = new List<string> ();
+	static public List<NewPosition> lookingAt = new List<NewPosition> ();
 
+	public Animator a;
 	// Use this for initialization
 	void Start () {
 		transform.position = pos.transform.position;
 		pos.playPresent = true;
 		//StartCoroutine (pos.ShowAvailable (this));
 		isMoving = false;
+		a = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -46,8 +51,11 @@ public class PlayerMovement : MonoBehaviour {
 	public IEnumerator Move(NewPosition p, int delay, string speed) {
 		Debug.Log ("Moving Towards: " + p + " with delay: " + delay + " and speed " + speed);
 
+
+
 		isMoving = true;
 		pos.playPresent = false;
+
 		stoppedMovement = p;
 		if (pos.tag == "Enemy") {
 			pos.transform.position = new Vector3 (pos.transform.position.x, -0.5f, pos.transform.position.z);
@@ -55,15 +63,20 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		float s = getSpeed (speed);
 		yield return new WaitForSeconds (delay);
+		a.SetBool ("isWalking", true);
 
 		float distance = Vector3.Distance (transform.position, p.transform.position);
 		Vector3 direction = (p.transform.position - transform.position) / 50;
+
+		transform.rotation = Quaternion.LookRotation (-direction);
 		for (int i = 0; i < 50; i++) {
 			transform.position += direction;
 			yield return new WaitForSeconds (0.005f * distance / s);
 		}
 			
 		pos = p;
+		a.SetBool ("isWalking", false);
+		lookingAt.Clear ();
 		yield return new WaitForSeconds (delayBetweenActions);
 		pos.playPresent = true;
 		isMoving = false;
@@ -127,6 +140,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		yield return new WaitForSeconds (delay);
 
+		a.SetBool ("isWalking", true);
 		isMoving = true;
 		stoppedMovement = p;
 		float distance = Vector3.Distance (transform.position, p.transform.position);
@@ -140,8 +154,12 @@ public class PlayerMovement : MonoBehaviour {
 			transform.position += direction;
 			yield return new WaitForSeconds (0.0005f * distance / s);
 		}
-		
+
+
+		pos.transform.GetChild (0).gameObject.SetActive (false);
 		pos = p;
+
+
 		//p.GetComponent<MeshRenderer> ().enabled = false;
 
 		//p.UpdateDirections ();
@@ -149,7 +167,7 @@ public class PlayerMovement : MonoBehaviour {
 		//p.tag = "Untagged";
 		//StopCoroutine(p.GetComponent<EnemyMovement>().routine);
 		//p.GetComponent<EnemyMovement> ().routine = null;
-		
+		a.SetBool ("isWalking", false);
 		yield return new WaitForSeconds (delayBetweenActions);
 
 		pos.playPresent = true;
@@ -215,4 +233,20 @@ public class PlayerMovement : MonoBehaviour {
 		return s;
 	}
 
+
+	public IEnumerator GameOver(Vector3 enemy) {
+
+		StopCoroutine (ttm.routine);
+
+		yield return new WaitForSeconds (1f);
+
+		Vector3 direction = (enemy - transform.position);
+
+		transform.rotation = Quaternion.LookRotation (-direction);
+
+
+		yield return new WaitForSeconds (2f);
+
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+	}
 }

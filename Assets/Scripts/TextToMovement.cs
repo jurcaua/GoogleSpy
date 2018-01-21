@@ -8,7 +8,7 @@ public class TextToMovement : MonoBehaviour {
 
 	public GameObject player;
 	PlayerMovement pm;
-	Coroutine routine;
+	public Coroutine routine;
 
 	// Use this for initialization
 	void Start () {

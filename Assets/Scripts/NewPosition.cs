@@ -17,17 +17,30 @@ public class NewPosition : MonoBehaviour {
 	public List<NewPosition> positionsInRange = new List<NewPosition>();
 	public List<NewPosition> possiblePositions = new List<NewPosition>();
 
+	public bool lookedAt;
 
 	void Update() {
 		if (playPresent) {
 			foreach (NewPosition np in positionsInRange) {
+
 				if (np.tag == "Enemy") {
 					Debug.DrawLine (transform.position, np.transform.position, Color.blue);
 				} else if (np.tag == "Position") { 
+					//np.transform.GetChild (0).gameObject.SetActive (true);
 					Debug.DrawLine (transform.position, np.transform.position, Color.red);
+					if (!PlayerMovement.lookingAt.Contains(np)) {
+						PlayerMovement.lookingAt.Add (np);
+					}
 				} else {
 					//positionsInRange.Remove (np);
 				}
+			}
+		}
+		if (transform.tag == "Position") {
+			if (PlayerMovement.lookingAt.Contains (this)) {
+				transform.GetChild (0).gameObject.SetActive (true);
+			} else {
+				transform.GetChild (0).gameObject.SetActive (false);
 			}
 		}
 	}
