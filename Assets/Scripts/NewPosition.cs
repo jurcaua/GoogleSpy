@@ -100,7 +100,7 @@ public class NewPosition : MonoBehaviour {
 	void OnTriggerEnter(Collider coll) {
 		//positionsInRange.Clear ();
 		//if// ((transform.tag == "Enemy" && (coll.tag == "Enemy" || coll.tag == "Position")) || (possiblePositions.Contains(coll.GetComponent<NewPosition> ())  && (coll.tag == "Enemy" || coll.tag == "Position"))) {
-		if ((possiblePositions.Contains(coll.GetComponent<NewPosition> ())  && (coll.tag == "Enemy" || coll.tag == "Position"))) {
+		if ((possiblePositions.Contains(coll.GetComponent<NewPosition> ())  && (coll.tag == "Enemy" || coll.tag == "Position")) && !positionsInRange.Contains((coll.GetComponent<NewPosition>()))) {
 			positionsInRange.Add (coll.GetComponent<NewPosition> ());
 		}
 	}
@@ -170,11 +170,11 @@ public class NewPosition : MonoBehaviour {
 	}
 
 	public NewPosition getPosition(string direction, string obj) {
-			if (obj == null) {
-				if (getFixedDirection (direction) != null) {
-					return getFixedDirection (direction);
-				}
+		if (obj == null) {
+			if (getFixedDirection (direction) != null) {
+				return getFixedDirection (direction);
 			}
+		}
 
 		foreach (NewPosition np in positionsInRange) {
 			if (np.tag == "Position") {
@@ -185,14 +185,14 @@ public class NewPosition : MonoBehaviour {
 						return np;
 					}
 				} else if (direction == null && obj != null) {
-					Debug.Log (np._name + " " + obj);
 					if (np._name == obj) {
 						return np;
 					}
-				} else if (direction.Equals(getDirectionTo (np)) && np._name == obj) {
+				} else if (direction.Equals (getDirectionTo (np)) && np._name == obj) {
 					return np;
 				} 
 			}
+
 		}
 		return null;
 	}
@@ -203,7 +203,7 @@ public class NewPosition : MonoBehaviour {
 		yield return new WaitForSeconds (0.1f);
 		foreach (NewPosition p in positionsInRange) {
 			GameObject a = Instantiate (arrow, (transform.position + (p.transform.position - transform.position).normalized * 1.5f), Quaternion.identity);
-			if (p._name != null) {
+			if (p._name != "") {
 				a.GetComponentInChildren<TextMeshProUGUI> ().text = p._name;
 			} else {
 				a.GetComponentInChildren<TextMeshProUGUI> ().text = getDirectionTo(p);

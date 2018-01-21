@@ -115,7 +115,7 @@ public class TextToMovement : MonoBehaviour {
 
 	public void NewTranslate (string tag, string action, string direction, string name, string speed, int delay)
 	{
-		if (action == "wait") {
+		if (action == "wait" && routine != null) {
 			StopCoroutine (routine);
 			return;
 		} else if (action == "resume") {

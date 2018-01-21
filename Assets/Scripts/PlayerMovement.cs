@@ -25,11 +25,12 @@ public class PlayerMovement : MonoBehaviour {
 	static public List<NewPosition> lookingAt = new List<NewPosition> ();
 
 	public Animator a;
+	public bool canShoot;
 	// Use this for initialization
 	void Start () {
 		transform.position = pos.transform.position;
 		pos.playPresent = true;
-		//StartCoroutine (pos.ShowAvailable (this));
+		StartCoroutine (pos.ShowAvailable (this));
 		isMoving = false;
 		a = GetComponent<Animator> ();
 	}
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
 		yield return new WaitForSeconds (delayBetweenActions);
 		pos.playPresent = true;
 		isMoving = false;
-		//StartCoroutine(pos.ShowAvailable (this));
+		StartCoroutine(pos.ShowAvailable (this));
 	}
 
 //	public IEnumerator moveTowards(Position p, int delayBeforeAction, string parameter) {
@@ -126,11 +127,12 @@ public class PlayerMovement : MonoBehaviour {
 //
 
 	public IEnumerator Shoot(NewPosition p, int delay, string speed) {
-		yield return new WaitForSeconds (delay);
-		Debug.Log ("Shoot: " + p + " with delay: " + delay + " and speed " + speed);
-		Transform b = Instantiate (bullet, transform.position, Quaternion.identity).transform;
-		b.transform.LookAt (p.transform);
-
+		if (canShoot) {
+			yield return new WaitForSeconds (delay);
+			Debug.Log ("Shoot: " + p + " with delay: " + delay + " and speed " + speed);
+			Transform b = Instantiate (bullet, transform.position, Quaternion.identity).transform;
+			b.transform.LookAt (p.transform);
+		}
 	}
 
 	public IEnumerator Sneak(NewPosition p, int delay, string speed) {
@@ -157,7 +159,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 
-		pos.transform.GetChild (0).gameObject.SetActive (false);
+		p.transform.GetChild (0).gameObject.SetActive (false);
 		pos = p;
 
 
@@ -173,7 +175,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		pos.playPresent = true;
 		isMoving = false;
-		//StartCoroutine(pos.ShowAvailable (this));
+		StartCoroutine(pos.ShowAvailable (this));
 		
 	}
 
