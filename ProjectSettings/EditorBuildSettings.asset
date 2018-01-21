@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/test_warehouse.unity
     guid: cd87ed04aeb67b640937ad57d6c47ae5
+  - enabled: 1
+    path: Assets/_Scenes/martin.unity
+    guid: 94d52b95169a2234591989485d1db253
