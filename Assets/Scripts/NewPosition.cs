@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NewPosition : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class NewPosition : MonoBehaviour {
 	public bool playPresent;
 
     public bool victoryPosition = false;
+    public bool won = false;
 
 	public List<NewPosition> positionsInRange = new List<NewPosition>();
 	public List<NewPosition> possiblePositions = new List<NewPosition>();
@@ -24,11 +26,17 @@ public class NewPosition : MonoBehaviour {
 	public GameObject arrow;
 	public List<GameObject> arrows = new List<GameObject> ();
 
+    public Animator victoryTextAnimator;
+
 	void Update() {
 		if (playPresent) {
 
-            if (victoryPosition) {
+            if (victoryPosition && !won) {
                 // winning condition
+                victoryTextAnimator.SetTrigger("win");
+                victoryTextAnimator.GetComponent<TextMeshProUGUI>().enabled = true;
+                won = true;
+                StartCoroutine(GoToMainMenu());
             }
 
 			foreach (NewPosition np in positionsInRange) {
@@ -54,6 +62,11 @@ public class NewPosition : MonoBehaviour {
 			}
 		}
 	}
+
+    IEnumerator GoToMainMenu() {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("main-menu");
+    }
 
 	void Start() {
 	}
