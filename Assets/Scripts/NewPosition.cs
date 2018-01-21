@@ -14,12 +14,19 @@ public class NewPosition : MonoBehaviour {
 
 	public bool playPresent;
 
+    public bool victoryPosition = false;
+
 	public List<NewPosition> positionsInRange = new List<NewPosition>();
 	public List<NewPosition> possiblePositions = new List<NewPosition>();
 
 
 	void Update() {
 		if (playPresent) {
+
+            if (victoryPosition) {
+                // winning condition
+            }
+
 			foreach (NewPosition np in positionsInRange) {
 				if (np.tag == "Enemy") {
 					Debug.DrawLine (transform.position, np.transform.position, Color.blue);
