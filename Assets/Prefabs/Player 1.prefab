@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4569405239998552}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: GunArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,6 +178,8 @@ GameObject:
   - component: {fileID: 95442952026213966}
   - component: {fileID: 65450026695629936}
   - component: {fileID: 114108491087492298}
+  - component: {fileID: 65120363190263412}
+  - component: {fileID: 114672424473501186}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Untagged
@@ -479,8 +481,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592402017201282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.05, y: 0.56, z: -30.31}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: -7.15}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4157047631357164}
   - {fileID: 4381170774227192}
@@ -1136,6 +1138,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101047113017002}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65120363190263412
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592402017201282}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65450026695629936
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1187,6 +1201,30 @@ MonoBehaviour:
   delayBetweenActions: 0
   futureActions: []
   a: {fileID: 0}
+  canShoot: 0
+--- !u!114 &114672424473501186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592402017201282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af514f1f354e1bf4aa25a1c2eeb0aa7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pos: {fileID: 0}
+  isMoving: 0
+  queueable: 0
+  speed: 0
+  stoppedMovement: {fileID: 0}
+  stopped: 0
+  bullet: {fileID: 1634961284391466, guid: 46299eff9b232ec41b80fa86210eccef, type: 2}
+  ttm: {fileID: 0}
+  delayBetweenActions: 0
+  futureActions: []
+  a: {fileID: 0}
+  canShoot: 0
 --- !u!135 &135565845688894002
 SphereCollider:
   m_ObjectHideFlags: 1
