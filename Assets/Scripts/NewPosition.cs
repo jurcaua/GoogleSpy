@@ -21,6 +21,9 @@ public class NewPosition : MonoBehaviour {
 
 	public bool lookedAt;
 
+	public GameObject arrow;
+	public List<GameObject> arrows = new List<GameObject> ();
+
 	void Update() {
 		if (playPresent) {
 
@@ -143,6 +146,13 @@ public class NewPosition : MonoBehaviour {
 	}
 
 	public NewPosition getEnemy(string direction, string color) {
+
+//		if (color == null) {
+//			if (getFixedDirection (direction) != null) {
+//				return getFixedDirection (direction);
+//			}
+//		}
+
 		foreach (NewPosition np in positionsInRange) {
 			if (np.tag == "Enemy") {
 				if (direction == null && color == null) {
@@ -183,5 +193,39 @@ public class NewPosition : MonoBehaviour {
 			}
 		}
 		return null;
+	}
+
+	public IEnumerator ShowAvailable(PlayerMovement pm) {
+
+
+		yield return new WaitForSeconds (0.1f);
+		foreach (NewPosition p in positionsInRange) {
+			GameObject a = Instantiate (arrow, (transform.position + (p.transform.position - transform.position).normalized * 1.5f), Quaternion.identity);
+			if (p._name != null) {
+				a.GetComponentInChildren<TextMeshProUGUI> ().text = p._name;
+			} else {
+				a.GetComponentInChildren<TextMeshProUGUI> ().text = getDirectionTo(p);
+			}
+			arrows.Add (a);
+			a.transform.LookAt (p.transform);
+		}
+
+		pm.isMoving = false;
+
+		while (!pm.isMoving) {
+			int i = 0;
+			foreach (NewPosition p in positionsInRange) {
+				arrows[i].transform.position = (transform.position + (p.transform.position - transform.position).normalized * 1.5f);
+				//arrows [i].transform.position -= new Vector3 (0, arrows [i].transform.position.y, 0);
+				arrows[i].transform.LookAt (p.transform);
+				i++;
+			}
+			yield return new WaitForSeconds (0.01f);
+		}
+
+		foreach (GameObject a in arrows) {
+			Destroy (a);
+		}
+		arrows.Clear();
 	}
 }

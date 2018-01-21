@@ -20,13 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4838135524286892}
   - component: {fileID: 33995181723522960}
-  - component: {fileID: 135513138416853540}
   - component: {fileID: 114433034871232344}
   - component: {fileID: 135429715169737790}
   - component: {fileID: 54093376823938412}
-  - component: {fileID: 135762216615616476}
   m_Layer: 0
-  m_Name: Obstacle0
+  m_Name: Position
   m_TagString: Position
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,6 +404,7 @@ MonoBehaviour:
   Forwards: {fileID: 0}
   Backwards: {fileID: 0}
   playPresent: 0
+  victoryPosition: 0
   positionsInRange: []
   possiblePositions:
   - {fileID: 0}
@@ -469,18 +468,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135513138416853540
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1337993069215690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135609748319178260
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -492,16 +479,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135762216615616476
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1337993069215690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}

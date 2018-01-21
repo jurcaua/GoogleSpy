@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
 		transform.position = pos.transform.position;
 		pos.playPresent = true;
-		//StartCoroutine (pos.ShowAvailable (this));
+		StartCoroutine (pos.ShowAvailable (this));
 		isMoving = false;
 		a = GetComponent<Animator> ();
 	}
@@ -66,10 +66,10 @@ public class PlayerMovement : MonoBehaviour {
 		a.SetBool ("isWalking", true);
 
 		float distance = Vector3.Distance (transform.position, p.transform.position);
-		Vector3 direction = (p.transform.position - transform.position) / 50;
+		Vector3 direction = (p.transform.position - transform.position) / 100;
 
 		transform.rotation = Quaternion.LookRotation (-direction);
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 100; i++) {
 			transform.position += direction;
 			yield return new WaitForSeconds (0.005f * distance / s);
 		}
@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour {
 		yield return new WaitForSeconds (delayBetweenActions);
 		pos.playPresent = true;
 		isMoving = false;
+		StartCoroutine(pos.ShowAvailable (this));
 	}
 
 //	public IEnumerator moveTowards(Position p, int delayBeforeAction, string parameter) {
@@ -172,6 +173,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		pos.playPresent = true;
 		isMoving = false;
+		StartCoroutine(pos.ShowAvailable (this));
 		
 	}
 
