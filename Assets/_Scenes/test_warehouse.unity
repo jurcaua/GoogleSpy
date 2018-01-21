@@ -140,6 +140,8 @@ MonoBehaviour:
   positionsInRange: []
   possiblePositions: []
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &16552622
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -450,6 +452,8 @@ MonoBehaviour:
   positionsInRange: []
   possiblePositions: []
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!1001 &41086489
 Prefab:
   m_ObjectHideFlags: 0
@@ -1711,6 +1715,8 @@ MonoBehaviour:
   positionsInRange: []
   possiblePositions: []
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!1001 &302410899
 Prefab:
   m_ObjectHideFlags: 0
@@ -1985,6 +1991,8 @@ MonoBehaviour:
   positionsInRange: []
   possiblePositions: []
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &335255147
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2698,6 +2706,8 @@ MonoBehaviour:
   positionsInRange: []
   possiblePositions: []
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &485515464
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3493,6 +3503,8 @@ MonoBehaviour:
   - {fileID: 852174938}
   - {fileID: 740258823}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &618896600
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4592,6 +4604,8 @@ MonoBehaviour:
   positionsInRange: []
   possiblePositions: []
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!1 &740258822 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1337993069215690, guid: 134bac7b9bbf65d4d96ad734349aa1d8,
@@ -4621,6 +4635,8 @@ MonoBehaviour:
   - {fileID: 618896599}
   - {fileID: 1696845760}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &740258824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4842,6 +4858,8 @@ MonoBehaviour:
   - {fileID: 618896599}
   - {fileID: 740258823}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &852174939
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5131,6 +5149,8 @@ MonoBehaviour:
   positionsInRange: []
   possiblePositions: []
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &896424532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5335,6 +5355,8 @@ MonoBehaviour:
   - {fileID: 2036112867}
   - {fileID: 1105312564}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &977586825
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5797,6 +5819,8 @@ MonoBehaviour:
   - {fileID: 1647870320}
   - {fileID: 0}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1104290086
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5839,6 +5863,8 @@ MonoBehaviour:
   possiblePositions:
   - {fileID: 977586824}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1105312565
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6029,6 +6055,8 @@ MonoBehaviour:
   - {fileID: 1275625534}
   - {fileID: 1960016490}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1131437621
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6751,6 +6779,8 @@ MonoBehaviour:
   - {fileID: 1960016490}
   - {fileID: 1810110238}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1275625535
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7254,6 +7284,8 @@ MonoBehaviour:
   - {fileID: 1696845760}
   - {fileID: 2036112867}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1361486968
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8723,6 +8755,8 @@ MonoBehaviour:
   - {fileID: 1104290085}
   - {fileID: 1960016490}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1647870321
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9113,6 +9147,8 @@ MonoBehaviour:
   - {fileID: 740258823}
   - {fileID: 1361486967}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1696845761
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9638,6 +9674,8 @@ MonoBehaviour:
   - {fileID: 1275625534}
   - {fileID: 1880099950}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1810110239
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10031,6 +10069,8 @@ MonoBehaviour:
   - {fileID: 1810110238}
   - {fileID: 618896599}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1880099951
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10475,6 +10515,8 @@ MonoBehaviour:
   - {fileID: 1131437620}
   - {fileID: 1275625534}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &1960016491
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10886,6 +10928,8 @@ MonoBehaviour:
   possiblePositions:
   - {fileID: 2036112867}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &2014405180
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11042,6 +11086,8 @@ MonoBehaviour:
   - {fileID: 2014405179}
   - {fileID: 977586824}
   lookedAt: 0
+  arrow: {fileID: 0}
+  arrows: []
 --- !u!54 &2036112868
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11106,7 +11152,9 @@ Prefab:
       propertyPath: ttm
       value: 
       objectReference: {fileID: 1995850402}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114672424473501186, guid: 2c4ff0ffd424da8419d905cae1fef82d, type: 2}
+    - {fileID: 65120363190263412, guid: 2c4ff0ffd424da8419d905cae1fef82d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2c4ff0ffd424da8419d905cae1fef82d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2049830660 stripped

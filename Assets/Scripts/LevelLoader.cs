@@ -11,14 +11,9 @@ public class LevelLoader : MonoBehaviour {
     public string[] sceneNames;
     public Transform[] explosionSpawns; 
 
-	public void LoadScene1() {
-        StartCoroutine(Load(sceneNames[0]));
-        Instantiate(explosion, explosionSpawns[0]);
-    }
-
-    public void LoadScene2() {
-        StartCoroutine(Load(sceneNames[1]));
-        Instantiate(explosion, explosionSpawns[1]);
+	public void LoadScene(int num) {
+        StartCoroutine(Load(sceneNames[num - 1]));
+        Instantiate(explosion, explosionSpawns[num - 1]);
     }
 
     IEnumerator Load(string sceneName) {
