@@ -7,7 +7,7 @@ public class Rotater : MonoBehaviour {
     public Vector3 rotationMag = Vector3.one;
     public float speed = 5f;
 	
-	// Update is called once per frame
+    // simply rotates according to set public values
 	void Update () {
         transform.Rotate(rotationMag * speed * Time.deltaTime);
 	}

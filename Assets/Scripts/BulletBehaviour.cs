@@ -5,13 +5,7 @@ using UnityEngine;
 public class BulletBehaviour : MonoBehaviour {
 
 	public int speed;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
 	void Update () {
 		transform.position += transform.forward * speed / 100;
 	}
@@ -19,14 +13,10 @@ public class BulletBehaviour : MonoBehaviour {
 	void OnTriggerEnter(Collider coll) {
 		
 		Debug.Log (coll.gameObject.name);
-		if (coll.gameObject.tag == "Enemy") {
-			//coll.gameObject.GetComponent<Position>().Die ();
-			if (coll.isTrigger == false) {
-				//Destroy (coll.gameObject);
-				coll.transform.tag = "Untagged";
-				coll.transform.GetChild (0).gameObject.SetActive (false);
-				Destroy (gameObject);
-			}
+		if (coll.gameObject.tag == "Enemy" && coll.isTrigger == false) {
+			coll.transform.tag = "Untagged";                                // no longer an enemy
+			coll.transform.GetChild (0).gameObject.SetActive (false);       // deactivate the dynamic sight
+			Destroy (gameObject);                                           // destory
 		}
 	}
 }

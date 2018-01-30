@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EquipGun : MonoBehaviour {
 
+    // when gun object collides with the player, set to right position and enable ability to shoot for player
     void OnTriggerEnter(Collider c) {
         if (LayerMask.LayerToName(c.gameObject.layer).Equals("Player")) {
 

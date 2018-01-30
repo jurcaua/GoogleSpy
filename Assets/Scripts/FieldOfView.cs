@@ -183,5 +183,4 @@ public class FieldOfView : MonoBehaviour {
 			pointB = _pointB;
 		}
 	}
-
 }
