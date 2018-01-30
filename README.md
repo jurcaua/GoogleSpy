@@ -1,3 +1,5 @@
+View devpost (with pictures) at: https://devpost.com/software/googlespy
+
 ## GoogleSpy
 ### The guy in the van never really got much credit.
 
